@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <button v-on:click="fetchJoke()">fetch joke</button>
     <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -27,7 +28,18 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+   methods: {
+   	fetchJoke () {
+      const that = this
+      fetch('/api').then( function(response){
+        return response.json()
+      }).then( function(json) {
+          that.msg = json.one_liner
+      })
+    }
   }
+
 }
 </script>
 

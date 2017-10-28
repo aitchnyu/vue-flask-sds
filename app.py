@@ -29,6 +29,9 @@ def api():
 
 @lru_cache()
 def assets():
+    '''
+    This maps patterns to their actual filenames
+    '''
     out = {}
     for filename in os.listdir('static/assets'):
         if fnmatch(filename, 'app.*.css'):
@@ -46,6 +49,11 @@ def assets():
 @app.route('/')
 @app.route('/<path:path>')
 def index(path=None):
+    '''
+    This is a wildcard route that responds to every URL.
+    In dev mode, it loads JS from hot-reloading server.
+    In prod mode, it detects compiled bundles in static/ and serves them.
+    '''
     if app.debug:
         return render_template('index.html')
     else:

@@ -40,4 +40,14 @@ This will open a new browser tab in `http://localhost:8080/`. The contents are f
 
 You may explore the hot reloading and interacting with the app state.
 
+## Set Vue to play nicely with Flask
+Implement https://github.com/vuejs-templates/webpack/issues/546#issuecomment-301357523
+
+Also `autoOpenBrowser: false` in config/index.js
+
+Now Flask can serve Vue apps.
+
+I've included HelloWorld.vue for as an example in interacting with the API.
+
+To build assets for production, run the build_assets in myapp. It will copy files over to `static/assets`. Flask picks up actual filenames using the `assets()` function. That function is cached for saving time.
 
