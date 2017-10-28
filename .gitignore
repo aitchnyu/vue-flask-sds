@@ -1,0 +1,4 @@
+myapp/node_modules
+myapp/dist
+.idea/**
+__pycache__

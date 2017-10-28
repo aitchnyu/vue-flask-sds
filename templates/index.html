@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>client</title>
+    {% if production_assets %}
+      <link href="/static/assets/{{ production_assets.css }}" rel="stylesheet">
+    {% endif %}
+	</head>
+	<body>
+		<div id="app">loading your app...</div>
+      {% if production_assets %}
+        <script type="text/javascript" src="/static/assets/{{ production_assets.manifest_js }}"></script>
+        <script type="text/javascript" src="/static/assets/{{ production_assets.vendor_js }}"></script>
+        <script type="text/javascript" src="/static/assets/{{ production_assets.app_js }}"></script>
+      {% else %}
+        <script type="text/javascript" src="http://localhost:8080/app.js"></script>
+      {% endif %}
+	</body>
+</html>
